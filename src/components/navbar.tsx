@@ -12,6 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover";
+import { ModeToggle } from "./toggle-darkmode";
 
 type Props = {};
 
@@ -40,9 +41,10 @@ export default function Navbar({}: Props) {
         className="flex items-center gap-2
       "
       >
+        <ModeToggle />
         <Button
           variant="secondary"
-          className=" gap-2 bg-[#eaedef] hover:bg-[#eaedef]/60 hidden md:flex transition-all "
+          className=" gap-2  hidden md:flex transition-all "
         >
           <QrCode size={20} className="" />
           Get app

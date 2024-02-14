@@ -1,5 +1,5 @@
 /** @format */
-
+import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,19 +20,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen  w-full max-h-screen px-3",
-          inter.className
-        )}
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
       >
-        <Navbar />
-        <div>
-          {/* left sidebar  */}
-          {/* main */}
-        </div>
-        {children}
-      </body>
+        <body
+          className={cn(
+            "min-h-screen  w-full max-h-screen px-3",
+            inter.className
+          )}
+        >
+          <Navbar />
+          <div>
+            {/* left sidebar  */}
+            {/* main */}
+          </div>
+          {children}
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
