@@ -1,76 +1,165 @@
 /** @format */
-"use client";
 
 import { IconType } from "react-icons";
-import { FaHome, FaUser, FaCog, FaChartBar, FaEnvelope } from "react-icons/fa";
-import {
-  AiOutlineHome,
-  AiOutlineUser,
-  AiOutlineSetting,
-  AiOutlineBarChart,
-  AiOutlineMail
-} from "react-icons/ai";
 
-import { SidebarType } from "./type";
+// Sample icons imported from react-icons
+import { AiOutlineHome, AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
+import { RiSettings3Line } from "react-icons/ri";
 
-// Create data for the sidebar
-const sidebarData: SidebarType = {
+// Define SidebarItemType
+type SidebarItemType = {
+  icon: IconType;
+  activeIcon: IconType;
+  title: string;
+  href?: string;
+  subItems?: {
+    title: string;
+    href: string;
+  }[];
+};
+
+// Define CategoryWithListType
+type CategoryWithListType = {
+  title: string;
+  categories: SidebarItemType[];
+};
+
+// Define SidebarType
+export type SidebarType = {
+  categoryWithoutList: SidebarItemType[];
+  categoryWithList: CategoryWithListType[];
+};
+
+// Sample data for SidebarType
+export const sampleSidebarData: SidebarType = {
   categoryWithoutList: [
     {
       icon: AiOutlineHome,
-      activeIcon: FaHome, // Different active icon for Home
+      activeIcon: AiOutlineHome,
       title: "Home",
       href: "/home"
     },
     {
       icon: AiOutlineUser,
-      activeIcon: FaUser, // Different active icon for Profile
+      activeIcon: AiOutlineUser,
       title: "Profile",
       href: "/profile"
     },
     {
-      icon: AiOutlineSetting,
-      activeIcon: FaCog, // Different active icon for Settings
+      icon: RiSettings3Line,
+      activeIcon: RiSettings3Line,
       title: "Settings",
       href: "/settings"
     }
   ],
   categoryWithList: [
     {
-      title: "Analytics",
+      title: "Main",
       categories: [
         {
-          title: "Overview",
-          href: "/analytics/overview"
+          icon: AiOutlineHome,
+          activeIcon: AiOutlineHome,
+          title: "Home",
+          href: "/home",
+          subItems: [
+            {
+              title: "Profile",
+              href: "/profile"
+            },
+            {
+              title: "Main",
+              href: "/main"
+            },
+            {
+              title: "Settings",
+              href: "/profile"
+            },
+            {
+              title: "Accounnt",
+              href: "/accounnt"
+            }
+          ]
         },
         {
-          title: "Reports",
-          href: "/analytics/reports"
-        },
-        {
-          title: "Charts",
-          href: "/analytics/charts"
+          icon: AiOutlineUser,
+          activeIcon: AiOutlineUser,
+          title: "Profile",
+          href: "/profile"
         }
       ]
     },
     {
-      title: "Messages",
+      title: "Settings",
       categories: [
         {
-          title: "Inbox",
-          href: "/messages/inbox"
+          icon: RiSettings3Line,
+          activeIcon: RiSettings3Line,
+          title: "Settings",
+          href: "/settings"
         },
         {
-          title: "Sent",
-          href: "/messages/sent"
+          icon: AiOutlineSetting,
+          activeIcon: AiOutlineSetting,
+          title: "Account Settings",
+          href: "/account-settings",
+          subItems: [
+            {
+              title: "Profile",
+              href: "/profile"
+            },
+            {
+              title: "Main",
+              href: "/main"
+            },
+            {
+              title: "Settings",
+              href: "/profile"
+            },
+            {
+              title: "Accounnt",
+              href: "/accounnt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title: "User Settings",
+      categories: [
+        {
+          icon: RiSettings3Line,
+          activeIcon: RiSettings3Line,
+          title: "Reddit Settings",
+          href: "/reddit-settings"
         },
         {
-          title: "Drafts",
-          href: "/messages/drafts"
+          icon: AiOutlineSetting,
+          activeIcon: AiOutlineSetting,
+          title: "Account Settings",
+          href: "/account-settings",
+          subItems: [
+            {
+              title: "Profile",
+              href: "/profile"
+            },
+            {
+              title: "Main",
+              href: "/main"
+            },
+            {
+              title: "Settings",
+              href: "/profile"
+            },
+            {
+              title: "Accounnt",
+              href: "/accounnt"
+            }
+          ]
         }
       ]
     }
   ]
 };
 
-export default sidebarData;
+// Output sample data
+console.log(sampleSidebarData);

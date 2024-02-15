@@ -20,8 +20,5 @@ export type SidebarType = {
 
 export type CategoryWithListType = {
   title: string;
-  categories: {
-    title: string;
-    href: string;
-  }[];
+  categories: SidebarItemType[];
 };

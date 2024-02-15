@@ -7,7 +7,6 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import Sidebar from "@/components/sidebar";
-import sidebarData from "../components/sidebar/data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,10 +36,9 @@ export default function RootLayout({
           )}
         >
           <Navbar />
-          <section className="w-full max-w-7xl mx-auto    h-full flex  ">
-            
-              <Sidebar />
-            <main className="p-3  h-[calc(100%-64px)]  w-full overflow-auto  ">
+          <section className="w-full max-w-7xl mx-auto  h-[calc(100%-64px)] flex  ">
+            <Sidebar className=" h-full" />
+            <main className="p-3   h-full  w-full overflow-auto  ">
               {children}
             </main>
           </section>
